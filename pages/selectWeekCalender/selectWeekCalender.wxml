@@ -1,0 +1,31 @@
+
+<view style='width: {{ sysW * 4 }}px; margin-top: 10px'></view>
+<view class='hintText'>仅保留最近6个月交易数据</view>
+
+<block wx:for='{{ yearDataArr }}' wx:key="index">
+  <view style='width: {{ sysW * 4 }}px; margin-top: 10px'></view>
+  <view class='hintText'> ————  {{ item.year}}年  ————</view>
+<block wx:for='{{ item.monthDataArr }}' wx:key="index">
+<view class='box1' style='width: {{ sysW * 4 }}px;'>
+ <view class='dateBox'>{{ item.month}}月</view>
+ <block wx:for='{{ item.weekArr }}' wx:key="index">
+  <view 
+  style='width: {{ sysW }}px; height: {{ sysW }}px;' 
+  class='dayItem' 
+  bindtap="didSelectWeek"
+  data-seldata='{{item}}'
+  >
+  <view class='day'>第{{ index + 1 }}周</view>
+  <view class='amt'>{{item.weekStartDate}}-{{item.weekEndDate}}</view>
+  <view class='amt'>￥{{tradeData[item.dataIndex] || '0.00'}}</view>
+  </view>
+ </block>
+</view>
+</block>
+</block>
+
+
+<view id='bottomId' style='width: {{ sysW * 4 }}px; margin-top: {{sysW}}px; height: 20px'></view>
+
+
+ 

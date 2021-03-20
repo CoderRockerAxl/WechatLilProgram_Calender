@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <text class="user-motto" bindtap="dayCalenderTap">{{selectDate}}</text>
+
+  </view>
+  <view class="usermotto">
+    <text class="user-motto" bindtap="dayCalenderTap" data-category="day">日选择</text>
+    <text class="user-motto" bindtap="dayCalenderTap" data-category="week">周选择</text>
+    <text class="user-motto" bindtap="dayCalenderTap" data-category="month">月选择</text>
+  </view>
+</view>

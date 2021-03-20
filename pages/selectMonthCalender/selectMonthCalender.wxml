@@ -1,0 +1,27 @@
+
+<view style='width: {{ sysW * 4 }}px; margin-top: 10px'></view>
+<view class='hintText'>仅保留最近6个月交易数据</view>
+
+<block wx:for='{{ yearDataArr }}' wx:key="index">
+  <view style='width: {{ sysW * 4 }}px; margin-top: 10px'></view>
+  <view class='hintText'> ————  {{ item.year}}年  ————</view>
+  <view class='box1' style='width: {{ sysW * 4 }}px;'>
+<block wx:for='{{ item.monthDataArr }}' wx:key="index">
+  <view 
+  style='width: {{ sysW }}px; height: {{ sysW }}px;' 
+  class='dayItem' 
+  bindtap="didSelectMonth"
+  data-seldata='{{item}}'
+  >
+  <view class='day'>{{ item.month }}月</view>
+  <view class='amt'>￥{{tradeData[item.dataIndex] || '0.00'}}</view>
+  </view>
+</block>
+</view>
+</block>
+
+
+<view id='bottomId' style='width: {{ sysW * 4 }}px; margin-top: {{sysW}}px; height: 20px'></view>
+
+
+ 
